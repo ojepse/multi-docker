@@ -4,7 +4,8 @@
     {
       "name": "client",
       "image":"ojepse/multi-client",
-      "server"
+      "hostname":"client",
+      "essential": false,
     }
   ]
 }

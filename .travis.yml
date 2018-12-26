@@ -21,3 +21,4 @@ after_success:
   - docker push ojepse/multi-server
   - docker push ojepse/multi-worker
 
+  #Fixed
