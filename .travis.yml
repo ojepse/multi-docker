@@ -14,7 +14,7 @@ after_success:
   - docker build -t ojepse/multi-server ./server
   - docker build -t ojepse/multi-worker ./worker
 
-  -echo $DOCKER_PASSWORD | docker login -u "$DOCKER_ID" --password-stdin
+  -echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   - docker push ojepse/multi-client
   - docker push ojepse/multi-nginx

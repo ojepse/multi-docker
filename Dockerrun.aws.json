@@ -1,0 +1,10 @@
+{
+  "AWSBEDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image":"ojepse/multi-client",
+      "server"
+    }
+  ]
+}
