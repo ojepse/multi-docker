@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  -docker build -t ojepse/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run ojepse/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t ojepse/multi-client ./client
+  - docker build -t ojepse/multi-nginx ./nginx
+  - docker build -t ojepse/multi-server ./server
+  - docker build -t ojepse/multi-worker ./worker
+
+  -echo $DOCKER_PASSWORD | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push ojepse/multi-client
+  - docker push ojepse/multi-nginx
+  - docker push ojepse/multi-server
+  - docker push ojepse/multi-worker
+
