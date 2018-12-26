@@ -5,7 +5,32 @@
       "name": "client",
       "image":"ojepse/multi-client",
       "hostname":"client",
-      "essential": false,
+      "essential": false
+    },
+    {
+      "name":"server",
+      "image":"ojepse/multi-server",
+      "hostname":"api",
+      "essential": false
+    },
+    {
+      "name":"worker",
+      "image":"ojepse/multi-worker",
+      "hostname":"worker",
+      "essential": false
+    },
+    {
+      "name":"nginx",
+      "image":"ojepse/multi-nginx",
+      "hostname":"nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort":80,
+          "containerPort":80
+        }
+      ],
+      "links":["client","server"]
     }
   ]
 }
